@@ -1,7 +1,7 @@
 const houseToRent = [
     {
       name: "Modern flat",
-      type: "House",
+      type: "Flat",
       desc: "This is the perfect house for you, come to visit it you'll love it ",
       img: "https://cf.bstatic.com/images/hotel/max1024x768/177/177622915.jpg",
       available: false
@@ -9,7 +9,7 @@ const houseToRent = [
     {
       name: "Beautiful design house",
       type: "House",
-      desc: "This is the perfect house for you, come to visit it you'll love it ",
+      desc: "This is the perfect house for you with react, come to visit it you'll love it ",
       img:
         "https://images.adsttc.com/media/images/5de3/1ca6/3312/fda8/2a00/00b3/newsletter/001.jpg?1575165037",
       available: true
