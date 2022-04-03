@@ -21,7 +21,7 @@ function Wrapper() {
     //STEP 12 | Pour + de faciliter car on va l'utiliser plusieurs fois, on met "e.target.checked" dans une variable.
     //STEP 13 | Mettre une condition car à la décoche de la case, cela nous renvoie que les false et non l'état intial de nos données. On vérifie donc avec "if" : si notre case est cochée -> on veut filtrer et si non -> on va réutiliser notre setter pour réinitialiser l'état à l'intégralité de notre tableau de données.
     
-            //La "même" chose va être fait au niveau du "select" (l'algo va changer mais la démarche est similaire) et du champs de recherche. 
+            //La "même" chose va être faite au niveau du "select" (l'algo va changer mais la démarche est similaire)
 
     //STEP 15 | Mettre un écouteur d'évènement sur lequel on va appeler une méthode (ici, "handleType") pour manipuler nos données par la suite. Cette méthode pour l'instant est juste nommée mais inconnue.
     //STEP 16 | Déclarer une fonction nommée "handleType", on lui passe en argument notre évènement. On fait un console.log pour vérifier le bon cablâge.
@@ -31,6 +31,12 @@ function Wrapper() {
     //STEP 21 | Nous constatons ainsi un cas particulier : lorsque je sélectionne ALL, je n'ai pas de tableau renvoyé en console. En effet, je n'ai pas de maison ayant un type "All" mais uniquement "Flat" et "House".
     //STEP 22 | Mettre le setter devant notre filter puis y mettre une condition pour le bon affichage en cas de "All".
 
+            //La "même" chose va être faite au niveau du "input" champs de recherche (l'algo va changer mais la démarche est similaire)
+
+    //STEP 23 | L'écouteur d'évènement est cette fois ci un onIput et non un onChange, on créer une fonction handleSearch
+    //STEP 24 | On créer une variable "search" de notre évènement
+    //STEP 25 | On créer notre filter, o, y ajoute un includes qui nous retourne un booléen. Attention : includes est sensible à la casse donc on rajoute un toLowerCase à la variable search et avant le includes
+    //STEP 26 | On veut pouvoir à travers le input faire une recherche ET sur le nom ET sur la description donc j'utilise le "ou" (||) et je rajoute également une recherche sur la description avec :  house.desc.toLowerCase().includes(search)
 
 
     const [houses, setHouses] = useState(housesToRent)
@@ -54,6 +60,8 @@ function Wrapper() {
 
     }
 
+
+
     function handleType(e) {
         //console.log("ok le select");
        //console.log(e.target.value);
@@ -69,13 +77,22 @@ function Wrapper() {
        }
     }
 
+    function handleSearch(e){
+        //console.log(e);
+        //console.log(search);
 
+        let search = e.target.value.toLowerCase();
 
+        setHouses(housesToRent.filter(house => 
+            house.name.toLowerCase().includes(search) || house.desc.toLowerCase().includes(search) 
+            ));
+    }
 
 	return (
 		<div className="wrapper">
 			<div className="filters">
 				<input
+                    onInput={handleSearch}
 					type="text"
 					className="search-input"
 					placeholder="🔎 Type to search"
