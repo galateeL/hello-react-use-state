@@ -11,10 +11,23 @@ function Wrapper() {
 
     //STEP 5 | Mettre un écouteur d'évènement sur lequel on va appeler une méthode (ici, "handleAvailability") pour manipuler nos données par la suite. Cette méthode pour l'instant est juste nommée mais inconnue
     //STEP 6 | On déclare uen fonction nommée "handleAvailability", on lui passe en argument notre évènement. On fait un console.log pour vérifier le bon cablâge (on à connecté le fait de cocher la checkboxet de produire du code en réponse à ce clic)
+    
+    //STEP 7 | Faire un console.log(e) de l'évènement (qui est un sipmple objet) afin d'accéder à un certain nb d'infos sur l'évènement. Ce qui nous interesse est la clé "target", qui correspond à l'élément sur lequel on clique
+    //STEP 8 | Faire un console.log(target) afin de lire des informations sur ce target/ puis sur la value de target par exemple ou encore checked (ce qui nous interesse ici), on remarque alors que checked est soit true soit false en fonction de son état
+    //STEP 9 | Appliquer une methode filter sur notre tableau de données et l'on souhiate afficher que les maisons available. house.available doit être égal  l'état de notre case à cocher (cad e.target.checked)
+    //STEP 10 | Contrôler avec un console.log de notre méthode. On vient donc de récupérer un nouveau tableau contenant uniquement lensemble des maisons dispo
+    // STEP 11 | Mettre à jour la clé "houses" grâce au setter afin que notre filtre s'affiche
+    
     const [houses, setHouses] = useState(housesToRent)
 
     function handleAvailability(e) {
-        console.log ("ok");
+        //console.log ("ok");
+        //console.log(e);
+        //console.log(e.target);
+        //console.log(e.target.value);
+        //console.log(e.target.checked)
+        //console.log(housesToRent.filter(house => house.available === e.target.checked));
+        setHouses(housesToRent.filter(house => house.available === e.target.checked));
     }
 
 	return (
