@@ -8,7 +8,14 @@ function Wrapper() {
     //STEP 2 | En paramètre du useState on met la valeur d'initialisation de notre variable "houses". Ici on initialise useState avec nos données complètes (notre tableau de données)
     //STEP 3 | Il faut importer {useState} (ligne 1)
     //STEP 4 | On passe au composant Cards (bas de page) houses car nous venons d'initialiser avec housesTorent
+
+    //STEP 5 | Mettre un écouteur d'évènement sur lequel on va appeler une méthode (ici, "handleAvailability") pour manipuler nos données par la suite. Cette méthode pour l'instant est juste nommée mais inconnue
+    //STEP 6 | On déclare uen fonction nommée "handleAvailability", on lui passe en argument notre évènement. On fait un console.log pour vérifier le bon cablâge (on à connecté le fait de cocher la checkboxet de produire du code en réponse à ce clic)
     const [houses, setHouses] = useState(housesToRent)
+
+    function handleAvailability(e) {
+        console.log ("ok");
+    }
 
 	return (
 		<div className="wrapper">
@@ -32,6 +39,7 @@ function Wrapper() {
                     className="available-checkbox"
                     name="checkbox"
                     id=""
+                    onChange={handleAvailability}
                     />
                 </div>
 
